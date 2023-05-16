@@ -121,3 +121,10 @@ def user_registration():
             conn.close()
     
     return flask.jsonify(response)
+
+@app.route('/projeto/utilizador', methods = ['PUT'])
+def user_authentication():
+    logging.info('PUT /utilizador')
+    payload = flask.request.get_json()
+    
+    
