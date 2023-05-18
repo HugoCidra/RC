@@ -97,6 +97,7 @@ def user_registration():
     except (Exception, psycopg2.DatabaseError) as error:
         logging.error(f'POST /utilizador - error: {error}')
         response = {'status': statusCodes['internal_error'], 'error': str(error)}
+        conn.rollback()
         return flask.jsonify(response)
     
     if 'cc' not in payload:
@@ -212,7 +213,7 @@ def add_song(token):
         conn.commit()
         response = {'status': StatusCodes['success'], 'results': f'Inserted song {payload["song_id"]}'}
     except (Exception, psycopg2.DatabaseError) as error:
-        logging.error(f'POST /product - error: {error}')
+        logging.error(f'POST /musica - error: {error}')
         response = {'status': StatusCodes['internal_error'], 'errors': str(error)}
         
         #an error occurred, so we rollback
@@ -255,6 +256,8 @@ def search_song(nome):
         logger.error(f'GET /proj2/musica/<nome> - error: {error}')
         response = {'status': StatusCodes['internal_error'], 'errors': str(error)}
 
+        conn.rollback()
+        
     finally:
         if conn is not None:
             conn.close()
@@ -335,8 +338,14 @@ def play(id, token):
     cur = conn.cursor()
     
     ##########################################################
-    ## uhhh wtf, top 10 de musicas update I guess
+    ## some token shit to make sure user and all that
     ##########################################################
+    
+    if 'id' not in payload:
+        response = {'status': StatusCodes['api_error'], 'results': 'id value not in payload'}
+        return flask.jsonify(response)
+    
+    
 
 @app.route('/proj2/cartao_pre_pago/', methods = ['POST'])
 def generate_pre_paid(token):
@@ -369,9 +378,75 @@ def generate_pre_paid(token):
     cur.execute(statement)
     row = cur.fetchone()[0]
     
-    """responses = []
+    statements = []
+    valuess = []
     for i in range(int(payload['num'])):
         statement = 'INSERT INTO cartao_pre_pago (id, limitDate, valor, preco) VALUES (%s, %s, %s, %s)'
         values = ((str(int(row) + 1)), payload['limitDate'], payload['valor'], payload['preco'])
         
-        responses.append(object)""" #por acabar
+        statements.append(statement)
+        valuess.append(values)
+    
+    try:
+        for i in range(int(payload['num'])):
+            cur.execute(statements[i], valuess[i])
+            
+            conn.commit()
+        response = {'status': StatusCodes['success'], 'results': f'Inserted pre_paid(s)'}
+    
+    except (Exception, psycopg2.DatabaseError) as error:
+        logging.error(f' POST /proj2/cartao_pre_pago/ - error: {error}')
+        response = {'status': StatusCodes['internal_error'], 'errors': str(error)}
+
+        #an error occurred, so we rollback
+        conn.rollback()
+
+    finally:
+        if conn is not None:
+            conn.close()
+
+    return flask.jsonify(response)
+
+@app.route('/proj2/comentario/<song_id>', methods = ['POST'])
+def comentario():
+    logging.info('POST /comentario')
+    payload = flask.request.get_json()
+
+    conn = db_connection()
+    cur = conn.cursor()
+
+    logging.debug(f'POST /comentario - payload: {payload}')
+
+    if 'conteudo' not in payload:
+        response = {'status': StatusCodes['api_error'], 'results': 'conteudo value not in payload'}
+        return flask.jsonify(response)
+    if 'song_id' not in payload:
+        response = {'status': StatusCodes['api_error'], 'results': 'song_id value not in payload'}
+        return flask.jsonify(response)
+    if 'user_id' not in payload:
+        response = {'status': StatusCodes['api_error'], 'results': 'user_id value not in payload'}
+        return flask.jsonify(response)
+    
+    statement = 'SELECT COUNT (*) FROM musica'
+    cur.execute(statement)
+    row = cur.fetchone()[0]
+    
+    statement = 'INSERT INTO comentario (id, conteudo, song_id, user_id) VALUES (%s, %s, %s, %s)'
+    values = (str(int(row) + 1), payload['conteudo'], payload['song_id'], payload['user_id'])
+    
+    try:
+        cur.execute(statement, values)
+        conn.commit()
+        response = {'status': StatusCodes['success'], 'results': f'Inserted comment {payload["product_id"]}'}
+    
+    except (Exception, psycopg2.DatabaseError) as error:
+        logging.error(f'POST /comentario - error: {error}')
+        response = {'status': StatusCodes['internal_error'], 'errors': str(error)}
+    
+        conn.rollback()
+    
+    finally:
+        if conn is not None:
+            conn.close()
+
+    return flask.jsonify(response)
