@@ -106,21 +106,21 @@ def verify(token, mode):
     password=payload["pass"]
     
     if mode==0:
-        querie="""SELECT user_id FROM users WHERE users.nome=%s AND pessoa.pass=%s;"""
+        querie="""SELECT user_id FROM users WHERE users.nome=%s AND users.pass=%s;"""
         values=(username,password)
         
         cursor.execute(querie,values)
         rows=cursor.fetchall()
         
     elif mode==1:
-            querie="""SELECT user_id FROM users WHERE users.nome=%s AND pessoa.pass=%s;"""
+            querie="""SELECT user_id FROM admin WHERE admin.nome=%s AND admin.pass=%s;"""
             values=(username,password)
             
             cursor.execute(querie,values)
             rows=cursor.fetchall()
             
     elif mode==2:
-            querie="""SELECT user_id FROM users WHERE users.nome=%s AND pessoa.pass=%s;"""
+            querie="""SELECT user_id FROM artista WHERE artista.nome=%s AND artista.pass=%s;"""
             values=(username,password)
             
             cursor.execute(querie,values)
