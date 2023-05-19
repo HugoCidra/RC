@@ -24,7 +24,6 @@ import psycopg2
 import os
 from flask import request, Flask
 import hmac, hashlib, base64, json
-from dotenv import load_dotenv
 
 app = flask.Flask(__name__)
 
@@ -107,6 +106,7 @@ def landing_page():
     <br/>
     BD 2023 Team<br/>
     <br/>
+    <img src='https://cataas.com/cat'></img>
     """
 
 @app.route('/proj2/utilizador', methods=['POST'])
@@ -118,7 +118,7 @@ def user_registration():
     
     logging.debug(f'POST /utilizador - payload: {payload}')
     
-    req_values = ['nome', 'morada', 'email', 'cc', 'tipo']
+    req_values = ['nome', 'morada', 'email', 'palavra_passe', 'cc', 'tipo']
     
     for value in req_values:
         if value not in payload:
@@ -133,12 +133,15 @@ def user_registration():
     if 'email' not in payload:
         response = {'status': statusCodes['api_error'], 'results': 'email not in payload'}
         return flask.jsonify(response)
+    if 'palavra_passe' not in payload:
+        response = {'status': statusCodes['api_error'], 'results': 'palavra_passe not in payload'}
+        return flask.jsonify(response)
     
-    statement = 'SELECT COUNT(*) FROM utilizadores;'
+    statement = 'SELECT COUNT(*) FROM utilizador;'
     cursor.execute(statement)
     row = cursor.fetchone()[0]
-    statement = 'INSERT INTO utilizador (id, nome, morada, email) VALUES (%s, %s, %s, %s)'
-    values = (str(int(row)+1), payload['nome'], payload['morada'], payload['email'])
+    statement = 'INSERT INTO utilizador (user_id, nome, morada, email, palavra_passe) VALUES (%s, %s, %s, %s, %s)'
+    values = (str(int(row)+1), payload['nome'], payload['morada'], payload['email'], payload['palavra_passe'])
     
     try:
         cursor.execute(statement, values)
@@ -152,7 +155,7 @@ def user_registration():
     if 'cc' not in payload:
         response = {'status': statusCodes['api_error'], 'results': 'cc not in payload'}
         return flask.jsonify(response)
-    if 'atividade' not in payload:
+    if 'tipo' not in payload:
         response = {'status': statusCodes['api_error'], 'results': 'atividade not in payload'}
         return flask.jsonify(response)
     

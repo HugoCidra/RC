@@ -509,3 +509,317 @@ WARNING:werkzeug: * Debugger is active!
 INFO:werkzeug: * Debugger PIN: 389-734-814
 INFO:werkzeug:127.0.0.1 - - [19/May/2023 15:24:37] "GET / HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [19/May/2023 15:24:37] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\OneDrive\\Documentos\\GitHub\\RC\\50ptFY.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\OneDrive\\Documentos\\GitHub\\RC\\50ptFY.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\OneDrive\\Documentos\\GitHub\\RC\\50ptFY.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\OneDrive\\Documentos\\GitHub\\RC\\50ptFY.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 389-734-814
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 15:29:12] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 15:29:16] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 15:29:32] "GET / HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\OneDrive\\Documentos\\GitHub\\RC\\50ptFY.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\OneDrive\\Documentos\\GitHub\\RC\\50ptFY.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\OneDrive\\Documentos\\GitHub\\RC\\50ptFY.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\OneDrive\\Documentos\\GitHub\\RC\\50ptFY.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 389-734-814
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 389-734-814
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 15:29:54] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 389-734-814
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 15:31:16] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 15:31:24] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 15:31:28] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 15:31:30] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 15:31:45] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 15:31:47] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 15:31:52] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 15:31:58] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 15:32:04] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 15:32:08] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 15:32:15] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 15:32:17] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 15:32:18] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 15:32:20] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 15:32:25] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 15:32:28] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 15:32:29] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 15:32:31] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 389-734-814
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 15:35:22] "[33mGET /utilizadores HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 15:35:32] "[33mGET /utilizador HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 15:35:39] "[33mGET /utilizador HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 15:35:48] "[33mGET /utilizador/ HTTP/1.1[0m" 404 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Scripts\\conda-script.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 389-734-814
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\site-packages\\_pytest\\junitxml.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 389-734-814
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 389-734-814
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 15:44:23] "[33mGET /proj2/utilizador/ HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 15:44:54] "[31m[1mGET /proj2/utilizador HTTP/1.1[0m" 405 -
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 15:45:02] "[35m[1mPOST /proj2/utilizador HTTP/1.1[0m" 500 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\xml\\etree\\ElementPath.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\xml\\etree\\__init__.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\site-packages\\_pytest\\_io\\saferepr.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\site-packages\\_pytest\\_io\\wcwidth.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\site-packages\\_pytest\\helpconfig.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\site-packages\\_pytest\\hookspec.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\site-packages\\packaging\\version.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\site-packages\\pygments\\lexers\\python.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\site-packages\\pluggy\\_version.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\site-packages\\packaging\\requirements.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\site-packages\\_pytest\\_code\\source.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\site-packages\\_pytest\\_argcomplete.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\site-packages\\_pytest\\debugging.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\site-packages\\_pytest\\assertion\\util.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\site-packages\\_pytest\\pytester_assertions.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\site-packages\\_pytest\\warnings.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\site-packages\\pexpect\\expect.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\site-packages\\pexpect\\run.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 389-734-814
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\fnmatch.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\importlib\\util.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\shutil.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\uuid.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\enum.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 389-734-814
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\ast.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 389-734-814
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\posixpath.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\stat.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 389-734-814
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\site-packages\\numpy\\core\\overrides.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\site-packages\\numpy\\_typing\\_nbit.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\site-packages\\numpy\\_typing\\_array_like.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\site-packages\\numpy\\_typing\\_nested_sequence.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\site-packages\\numpy\\_typing\\_generic_alias.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\site-packages\\numpy\\_typing\\_dtype_like.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\site-packages\\numpy\\_typing\\_shape.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\site-packages\\numpy\\_typing\\_scalars.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\site-packages\\numpy\\_typing\\_char_codes.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 389-734-814
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\OneDrive\\Documentos\\GitHub\\RC\\50ptFY.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\OneDrive\\Documentos\\GitHub\\RC\\50ptFY.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\OneDrive\\Documentos\\GitHub\\RC\\50ptFY.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 389-734-814
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\OneDrive\\Documentos\\GitHub\\RC\\50ptFY.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\OneDrive\\Documentos\\GitHub\\RC\\50ptFY.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\OneDrive\\Documentos\\GitHub\\RC\\50ptFY.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 389-734-814
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\site-packages\\_pytest\\mark\\expression.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\difflib.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\linecache.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\pdb.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 389-734-814
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\unittest\\result.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\ssl.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\asyncio\\events.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\asyncio\\futures.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 389-734-814
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\unittest\\async_case.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\signal.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\cmd.py', reloading
+ERROR:root:POST /utilizador - error: column "id" of relation "utilizador" does not exist
+LINE 1: INSERT INTO utilizador (id, nome, morada, email) VALUES ('1'...
+                                ^
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 15:45:44] "POST /proj2/utilizador HTTP/1.1" 200 -
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 389-734-814
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\unittest\\case.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\asyncio\\staggered.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\asyncio\\unix_events.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\asyncio\\sslproto.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\asyncio\\base_subprocess.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\asyncio\\proactor_events.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\asyncio\\trsock.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\asyncio\\selector_events.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\asyncio\\windows_utils.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\socket.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 389-734-814
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\unittest\\suite.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\unittest\\loader.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 389-734-814
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\codecs.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 389-734-814
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\site-packages\\packaging\\_structures.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 389-734-814
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\random.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 389-734-814
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\site-packages\\_pytest\\assertion\\rewrite.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\site-packages\\_pytest\\assertion\\truncate.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 389-734-814
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\plistlib.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 389-734-814
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\email\\charset.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\email\\contentmanager.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\email\\errors.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 389-734-814
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\calendar.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 389-734-814
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\tty.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 389-734-814
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\copy.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 389-734-814
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\OneDrive\\Documentos\\GitHub\\RC\\50ptFY.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\OneDrive\\Documentos\\GitHub\\RC\\50ptFY.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 389-734-814
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\importlib\\abc.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\zipimport.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 389-734-814
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 389-734-814
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\sysconfig.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\importlib\\machinery.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\site-packages\\packaging\\_manylinux.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\site-packages\\packaging\\_musllinux.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 389-734-814
+ERROR:root:POST /utilizador - error: null value in column "palavra_passe" of relation "utilizador" violates not-null constraint
+DETAIL:  Failing row contains (1, Roberto, ali aao fundo, email.email@emaul.com, null).
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 15:47:11] "POST /proj2/utilizador HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\site-packages\\numpy\\core\\umath.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 389-734-814
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\gettext.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 389-734-814
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\csv.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\site-packages\\importlib_metadata\\_adapters.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\site-packages\\importlib_metadata\\_py39compat.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\site-packages\\importlib_metadata\\_collections.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 389-734-814
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\OneDrive\\Documentos\\GitHub\\RC\\50ptFY.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\OneDrive\\Documentos\\GitHub\\RC\\50ptFY.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\OneDrive\\Documentos\\GitHub\\RC\\50ptFY.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 389-734-814
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\OneDrive\\Documentos\\GitHub\\RC\\50ptFY.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\OneDrive\\Documentos\\GitHub\\RC\\50ptFY.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\OneDrive\\Documentos\\GitHub\\RC\\50ptFY.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\OneDrive\\Documentos\\GitHub\\RC\\50ptFY.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 389-734-814
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\getpass.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 389-734-814
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 15:49:16] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 15:49:21] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 15:49:23] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 15:49:24] "GET / HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\locale.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 389-734-814
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 15:49:48] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 15:49:49] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 15:49:50] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 15:49:52] "GET / HTTP/1.1" 200 -
+ERROR:root:POST /utilizador - error: null value in column "palavra_passe" of relation "utilizador" violates not-null constraint
+DETAIL:  Failing row contains (1, Roberto, ali aao fundo, email.email@emaul.com, null).
+
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 15:50:35] "POST /proj2/utilizador HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\OneDrive\\Documentos\\GitHub\\RC\\50ptFY.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\OneDrive\\Documentos\\GitHub\\RC\\50ptFY.py', reloading
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\OneDrive\\Documentos\\GitHub\\RC\\50ptFY.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:8080
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 389-734-814
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 15:51:41] "[35m[1mPOST /proj2/utilizador HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [19/May/2023 15:53:04] "[31m[1mGET /proj2/utilizador HTTP/1.1[0m" 405 -
+INFO:werkzeug: * Detected change in 'C:\\Users\\hugod\\anaconda3\\Lib\\string.py', reloading
+INFO:werkzeug: * Restarting with watchdog (windowsapi)
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 389-734-814
