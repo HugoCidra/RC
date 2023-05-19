@@ -504,3 +504,19 @@ def comentario():
             conn.close()
 
     return flask.jsonify(response)
+
+if __name__ == '__main__':
+    logging.basicConfig(filename = 'log_file.log')
+    logger = logging.getLogger('logger')
+    logger.setLevel(logging.DEBUG)
+    ch = logging.StreamHandler()
+    ch.setLevel(logging.DEBUG)
+    
+    formatter = logging.Formatter('%(asctime)s [%(levelname)s]: %(message)s', '%H:%M:%S')
+    ch.setFormatter(formatter)
+    logger.addHandler(ch)
+    
+    host = '127.0.0.1'
+    port = 8080
+    app.run(host=host, debug=True, threaded=True, port=port)
+    logging.info(f'API online: http://{host}:{port}')
