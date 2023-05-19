@@ -96,6 +96,41 @@ def descodifica_token(jwt):
 
     return payload
 
+def verify(token, mode):
+    payload=descodifica_token(token)
+
+    conn = db_connection()
+    cursor = conn.cursor()
+    
+    username=payload["nome"]
+    password=payload["pass"]
+    
+    if mode==0:
+        querie="""SELECT user_id FROM users WHERE users.nome=%s AND pessoa.pass=%s;"""
+        values=(username,password)
+        
+        cursor.execute(querie,values)
+        rows=cursor.fetchall()
+        
+    elif mode==1:
+            querie="""SELECT user_id FROM users WHERE users.nome=%s AND pessoa.pass=%s;"""
+            values=(username,password)
+            
+            cursor.execute(querie,values)
+            rows=cursor.fetchall()
+            
+    elif mode==2:
+            querie="""SELECT user_id FROM users WHERE users.nome=%s AND pessoa.pass=%s;"""
+            values=(username,password)
+            
+            cursor.execute(querie,values)
+            rows=cursor.fetchall()
+            
+    if(len(rows)>0):
+        return True;
+    else:
+        return False;    
+
 @app.route('/')
 def landing_page():
     return """
@@ -184,7 +219,6 @@ def user_authentication():
     conn = db_connection()
     cursor = conn.cursor()
 
-    req_values = ['nome', 'password']
     
     try:
         if "nome" in payload and "pass":
@@ -198,7 +232,7 @@ def user_authentication():
             rows=cursor.fetchall()
             
             if(len(rows)>0):
-                token=gera_token(payload)
+                token=gera_token({'nome':username,'pass':password})
                 content={'token':token}
             else:
                 content={'results':'invalid'}
