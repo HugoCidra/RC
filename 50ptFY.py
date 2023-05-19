@@ -105,12 +105,48 @@ def verify(token, mode):
     username=payload["nome"]
     password=payload["pass"]
     
-    if mode==0:
-        querie="""SELECT user_id FROM utilizador WHERE utilizador.nome=%s AND utilizador.pass=%s;"""
+    if mode==10:
+        querie="""SELECT user_id FROM utilizador WHERE utilizador.nome=%s AND utilizador.palavra_passe=%s;"""
         values=(username,password)
         
         cursor.execute(querie,values)
         rows=cursor.fetchall()
+
+        if(len(rows)>0):
+            querie="""SELECT tipo FROM consumidor WHERE consumidor.utilizador_user_id=%s;"""
+            values=(rows[0])
+            cursor.execute(querie,values)
+            rows=cursor.fetchall()
+            if(len(rows)>0):
+                if rows[0]== 'insert the type of subscription':##eu nao sei como e que chamaste os tipos de subscricao portanto depois poes tu mas aqui seria o basico
+                    return True
+                else:
+                    return False
+            else:
+                return False
+        else:
+            return False
+    elif mode==11:
+        querie="""SELECT user_id FROM utilizador WHERE utilizador.nome=%s AND utilizador.palavra_passe=%s;"""
+        values=(username,password)
+        
+        cursor.execute(querie,values)
+        rows=cursor.fetchall()
+
+        if(len(rows)>0):
+            querie="""SELECT tipo FROM consumidor WHERE consumidor.utilizador_user_id=%s;"""
+            values=(rows[0])
+            cursor.execute(querie,values)
+            rows=cursor.fetchall()
+            if(len(rows)>0):
+                if rows[0]== 'insert the type of subscription':##eu nao sei como e que chamaste os tipos de subscricao portanto depois poes tu mas aqui seria o premium
+                    return True
+                else:
+                    return False
+            else:
+                return False
+        else:
+            return False
         
     elif mode==1:
         querie="""SELECT user_id FROM utilizador WHERE utilizador.nome=%s AND utilizador.palavra_passe=%s;"""
@@ -120,7 +156,7 @@ def verify(token, mode):
         rows=cursor.fetchall()
 
         if(len(rows)>0):
-            querie="""SELECT user_id FROM administrador WHERE admin.user_id=%s;"""
+            querie="""SELECT utilizador_user_id FROM administrador WHERE admin.utilizador_user_id=%s;"""
             values=(rows[0])
             cursor.execute(querie,values)
             rows=cursor.fetchall()
@@ -132,11 +168,35 @@ def verify(token, mode):
             return False
             
     elif mode==2:
-            querie="""SELECT user_id FROM artista WHERE artista.nome=%s AND artista.pass=%s;"""
-            values=(username,password)
-            
+        querie="""SELECT user_id FROM utilizador WHERE utilizador.nome=%s AND utilizador.palavra_passe=%s;"""
+        values=(username,password)
+        
+        cursor.execute(querie,values)
+        rows=cursor.fetchall()
+
+        if(len(rows)>0):
+            querie="""SELECT utilizador_user_id FROM artista WHERE artista.utilizador_user_id=%s;"""
+            values=(rows[0])
             cursor.execute(querie,values)
             rows=cursor.fetchall()
+            if(len(rows)>0):
+                return True
+            else:
+                return False
+        else:
+            return False
+    elif mode==0:
+        querie="""SELECT user_id FROM utilizador WHERE utilizador.nome=%s AND utilizador.palavra_passe=%s;"""
+        values=(username,password)
+        
+        cursor.execute(querie,values)
+        rows=cursor.fetchall()
+        
+        if(len(rows)>0):
+            return True
+        else:
+            return False
+            
 
 @app.route('/')
 def landing_page():
