@@ -106,18 +106,30 @@ def verify(token, mode):
     password=payload["pass"]
     
     if mode==0:
-        querie="""SELECT user_id FROM users WHERE users.nome=%s AND users.pass=%s;"""
+        querie="""SELECT user_id FROM utilizador WHERE utilizador.nome=%s AND utilizador.pass=%s;"""
         values=(username,password)
         
         cursor.execute(querie,values)
         rows=cursor.fetchall()
         
     elif mode==1:
-            querie="""SELECT user_id FROM admin WHERE admin.nome=%s AND admin.pass=%s;"""
-            values=(username,password)
-            
+        querie="""SELECT user_id FROM utilizador WHERE utilizador.nome=%s AND utilizador.palavra_passe=%s;"""
+        values=(username,password)
+        
+        cursor.execute(querie,values)
+        rows=cursor.fetchall()
+
+        if(len(rows)>0):
+            querie="""SELECT user_id FROM administrador WHERE admin.user_id=%s;"""
+            values=(rows[0])
             cursor.execute(querie,values)
             rows=cursor.fetchall()
+            if(len(rows)>0):
+                return True
+            else:
+                return False
+        else:
+            return False
             
     elif mode==2:
             querie="""SELECT user_id FROM artista WHERE artista.nome=%s AND artista.pass=%s;"""
@@ -125,11 +137,6 @@ def verify(token, mode):
             
             cursor.execute(querie,values)
             rows=cursor.fetchall()
-            
-    if(len(rows)>0):
-        return True;
-    else:
-        return False;    
 
 @app.route('/')
 def landing_page():
