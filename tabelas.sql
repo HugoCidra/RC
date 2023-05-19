@@ -46,8 +46,8 @@ CREATE TABLE historicosubs (
 
 CREATE TABLE playlist (
 	playlist_id			 INTEGER,
-	tipo				 VARCHAR(512) NOT NULL,
-	musicas			 VARCHAR(512) NOT NULL,
+	nome				 VARCHAR(512) NOT NULL,
+	visibilidade			 VARCHAR(512) NOT NULL,
 	consumidor_utilizador_user_id INTEGER NOT NULL,
 	PRIMARY KEY(playlist_id)
 );

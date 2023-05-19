@@ -118,7 +118,7 @@ def verify(token, mode):
             cursor.execute(querie,values)
             rows=cursor.fetchall()
             if(len(rows)>0):
-                if rows[0]== 'insert the type of subscription':##eu nao sei como e que chamaste os tipos de subscricao portanto depois poes tu mas aqui seria o basico
+                if rows[0]== 'normal':
                     return True
                 else:
                     return False
@@ -139,7 +139,7 @@ def verify(token, mode):
             cursor.execute(querie,values)
             rows=cursor.fetchall()
             if(len(rows)>0):
-                if rows[0]== 'insert the type of subscription':##eu nao sei como e que chamaste os tipos de subscricao portanto depois poes tu mas aqui seria o premium
+                if rows[0]== 'premium':
                     return True
                 else:
                     return False
@@ -219,10 +219,6 @@ def user_registration(token):
     cursor = conn.cursor()
     
     logging.debug(f'POST /utilizador - payload: {payload}')
-    
-    for value in req_values:
-        if value not in payload:
-            return jsonify({'error': value + "not in payload"})
     
     if 'nome' not in payload:
         response = {'status': statusCodes['api_error'], 'results': 'nome not in payload'}
@@ -374,8 +370,8 @@ def add_song(token):
             cur.execute(statement)
             row_1 = cur.fetchone()[0]
             
-            statement = 'SELECT user_id from utilizador where nome == %s'
-            cur.execute(statement, token['nome'])
+            statement = 'SELECT user_id from utilizador where nome = %s'
+            cur.execute(statement, descodifica_token(token)[0])
             row_2 = cur.fetchone()[0]
             
             statement = 'INSERT INTO musica (song_id, titulo, duracao, ismn, lable, genero, dataLancamento, infoArtista, artista_utilizador_user_id) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)'
@@ -385,8 +381,8 @@ def add_song(token):
             cur.execute(statement)
             row_1 = cur.fetchone()[0]
             
-            statement = 'SELECT user_id from utilizador where nome == %s'
-            cur.execute(statement, token['nome'])
+            statement = 'SELECT user_id from utilizador where nome = %s'
+            cur.execute(statement, descodifica_token(token)[0])
             row_2 = cur.fetchone()[0]
             
             statement = 'INSERT INTO musica (song_id, titulo, duracao, ismn, lable, genero, dataLancamento, infoArtista, artista_utilizador_user_id) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)'
@@ -407,7 +403,7 @@ def add_song(token):
                 conn.close()
     
     else:
-        response = {'status': statusCodes['internal_error'], 'errors': str(error)}
+        response = {'status': statusCodes['internal_error'], 'errors': "no permission"}
     
     return flask.jsonify(response)
 
@@ -431,8 +427,8 @@ def add_album(token):
         cur.execute(statement)
         row_1 = cur.fetchone()[0]
         
-        statement = 'SELECT user_id from utilizador where nome == %s'
-        cur.execute(statement, token['nome'])
+        statement = 'SELECT user_id from utilizador where nome = %s'
+        cur.execute(statement, descodifica_token(token)[0])
         row_2 = cur.fetchone()[0]
         
         statement = 'INSERT INTO album (album_id, nome, artista_utilizador_user_id) VALUES (%s, %s, %s)'
@@ -455,7 +451,7 @@ def add_album(token):
         #falta ordem das musicas no album
         
     else:
-        response = {'status': statusCodes['internal_error'], 'errors': str(error)}
+        response = {'status': statusCodes['internal_error'], 'errors': "no permission"}
     
     return flask.jsonify(response)
 
@@ -495,7 +491,7 @@ def search_song(nome):
 
     return flask.jsonify(response)
 
-"""@app.route('/proj2/artista/<id>', methods = ['GET'])
+@app.route('/proj2/artista/<id>', methods = ['GET'])
 def detail_artist(id):
     logging.info('GET /proj2/artista/<id>')
     payload = flask.request.get_json()
@@ -506,7 +502,18 @@ def detail_artist(id):
     cur = conn.cursor()
     
     try:
+        cur.execute('SELECT * FROM musica, album, playlist WHERE artista_utilizador_user_id = %s;', (id))
+        rows = cur.fetchall()
         
+        logging.debug('GET /proj2/musica/<nome> - parse')
+        results = []
+        for row in rows:
+            logging.debug(row)
+            content = {'titulo': row[1], 'duracao': row[2], 'ismn': int(row[3]), 'label': row[4], 'genero': row[5], 'dataLancamento': row[6], 'infoArtistas': row[7],
+                       'nome_album': row[9]}
+            results.append(content)
+        
+        response = {'status': statusCodes['success'], 'results': results}
         
     except (Exception, psycopg2.DatabaseError) as error:
         logging.error(f'GET /proj2/artista/<id> - error: {error}')
@@ -516,9 +523,9 @@ def detail_artist(id):
         if conn is not None:
             conn.close()
 
-    return flask.jsonify(response)"""
+    return flask.jsonify(response)
 
-"""@app.route('/proj2/subscricao', methods = ['POST'])
+@app.route('/proj2/subscricao', methods = ['POST'])
 def sub_premium(token):
     logging.info('POST /proj2/subscricao')
     payload = flask.request.get_json()
@@ -529,16 +536,36 @@ def sub_premium(token):
     cur = conn.cursor()
     
     
-    ##########################################################
-    ## token shit here to finish this one (must be cliente)
-    ##########################################################
+    if verify(token, 10):
+        if 'duracao' not in payload:
+            response = {'status': statusCodes['api_error'], 'results': 'duracao value not in payload'}
+            return flask.jsonify(response)
+        if 'preco' not in payload:
+            response = {'status': statusCodes['api_error'], 'results': 'preco value not in payload'}
+            return flask.jsonify(response)
+        
+        statement = 'SELECT user_id FROM utilizador WHERE nome = %s'
+        cur.execute(statement, descodifica_token(token)[0])
+        row_1 = cur.fetchone()[0]
+        
+        statement = "UPDATE consumidor SET tipo = 'Premium' WHERE utilizador_user_id = %s"
+        
+        try:
+            cur.execute(statement, str(row_1))
+            conn.commit()
+            response = {'status': statusCodes['success'], 'results': 'Premum bought'}
+        except (Exception, psycopg2.DatabaseError) as error:
+            logging.error(f'POST /subscricao - error: {error}')
+            response = {'status': statusCodes['internal_error'], 'errors': str(error)}
+            
+            #an error occurred, so we rollback
+            conn.rollback()
+        finally:
+            if conn is not None:
+                conn.close()
+        
+        return flask.jsonify(response)
     
-    ##########################################################
-    ## query needed to change user in token to premium user
-    ## and also pre paid card logic that I'm once again too
-    ## tired now to figure out
-    ##########################################################"""
-
 @app.route('/proj2/playlist', methods = ['POST'])
 def create_playlist(token):
     logging.info('POST /proj2/playlist')
@@ -549,13 +576,64 @@ def create_playlist(token):
     conn = db_connection()
     cur = conn.cursor()
     
-    ##########################################################
-    ## token shit here to finish this one 
-    ## must be cliente AND premium
-    ## then just normal query stuff (INSERT INTO stuff, it's simple)
-    ##########################################################
+    if verify(token, 11):
+        if 'nome' not in payload:
+            response = {'status': statusCodes['api_error'], 'results': 'nome value not in payload'}
+            return flask.jsonify(response)
+        if 'visibilidade' not in payload:
+            response = {'status': statusCodes['api_error'], 'results': 'visibilidade value not in payload'}
+            return flask.jsonify(response)
+    
+        statement = 'SELECT COUNT (*) FROM playlist'
+        cur.execute(statement)
+        row = cur.fetchone()[0]
+        
+        statement = 'SELECT user_id FROM utilizador WHERE nome = %s'
+        cur.execute(statement, descodifica_token(token)[0])
+        row_1 = cur.fetchone()[0]
+        
+        statement = 'INSERT INTO playlist (playlist_id, nome, visibilidade, consumidor_utilizador_user_id) VALUES (%s, %s, %s, %s)'
+        values = (str(int(row) + 1), payload['nome'], payload['visibilidade'], str(row_1))
+    
+        try:
+            cur.execute(statement, values)
+            conn.commit()
+            response = {'status': statusCodes['success'], 'results': f'Playlist cretaed {payload["nome"]}'}
+        except (Exception, psycopg2.DatabaseError) as error:
+            logging.error(f'POST /playlist - error: {error}')
+            response = {'status': statusCodes['internal_error'], 'errors': str(error)}
+            
+            #an error occurred, so we rollback
+            conn.rollback()
+        
+        statement = 'SELECT COUNT (*) FROM playlist_musica'
+        cur.execute(statement)
+        row = cur.fetchone()[0]
+        
+        statement = 'SELECT artista_utilizador_user_id FROM musica WHERE song_id = %s'
+        cur.execute(statement, payload['song_1_id'])
+        row_1 = cur.fetchone()[0]
+        
+        statement = 'INSERT INTO playlist_musica (playlist_playlist_id, musica_song_id, musica_artista_user_id) VALUES (%s, %s, %s)'
+        values = (str(int(row) + 1), payload['song_1_id'], str(row_1))
+        
+        try:
+            cur.execute(statement, values)
+            conn.commit()
+            response = {'status': statusCodes['success'], 'results': f'Song added to playlist {payload["nome"]}'}
+        except (Exception, psycopg2.DatabaseError) as error:
+            logging.error(f'POST /playlist - error: {error}')
+            response = {'status': statusCodes['internal_error'], 'errors': str(error)}
+            
+            #an error occurred, so we rollback
+            conn.rollback()
+        finally:
+            if conn is not None:
+                conn.close()
+            
+    return flask.jsonify(response)
 
-@app.route('/proj2/<id>', methods = ['PUT'])
+@app.route('/proj2/<song_id>', methods = ['PUT'])
 def play(id, token):
     logging.info('PUT /proj2/<id>')
     payload = flask.request.get_json()
@@ -565,15 +643,36 @@ def play(id, token):
     conn = db_connection()
     cur = conn.cursor()
     
-    ##########################################################
-    ## some token shit to make sure user and all that
-    ##########################################################
+    if verify(token, 0):
+        statement = 'SELECT user_id FROM utilizador WHERE nome = %s'
+        cur.execute(statement, descodifica_token(token)[0])
+        row_1 = cur.fetchone()[0]
+        
+        statement = 'SELECT artista_utilizador_user_id FROM musica WHERE song_id = %s'
+        cur.execute(statement, payload['song_1_id'])
+        row_2 = cur.fetchone()[0]
+        
+        statement = 'SELECT streams FROM top10 WHERE musica_song_id = %s AND consumidor_utilizador_user_id = %s'
+        values = (id, row_1)
+        cur.execute(statement, values)
+        row_3 = cur.fetchone()[0]
     
-    if 'id' not in payload:
-        response = {'status': statusCodes['api_error'], 'results': 'id value not in payload'}
-        return flask.jsonify(response)
-    
-    
+        statement = 'INSERT INTO top10 (streams, consumidor_utilizador_user_id, musica_song_id, musica_artista_user_id) VALUES (%s, %s, %s, %s)'
+        values = (str(int(row_3) + 1), str(int(row_1)), id, str(int(row_2)))
+        
+        try:
+            cur.execute(statement, values)
+            conn.commit()
+            response = {'status': statusCodes['success'], 'results': f'Song played {id}'}
+        except (Exception, psycopg2.DatabaseError) as error:
+            logging.error(f'POST /<song_id> - error: {error}')
+            response = {'status': statusCodes['internal_error'], 'errors': str(error)}
+            
+            #an error occurred, so we rollback
+            conn.rollback()
+        finally:
+            if conn is not None:
+                conn.close()
 
 @app.route('/proj2/cartao_pre_pago/', methods = ['POST'])
 def generate_pre_paid(token):
@@ -585,58 +684,56 @@ def generate_pre_paid(token):
     conn = db_connection()
     cur = conn.cursor()
     
-    ##########################################################
-    ## cena de tokens para make sure admin
-    ##########################################################
     
-    if 'num' not in payload:
-        response = {'status': statusCodes['api_error'], 'results': 'num value not in payload'}
-        return flask.jsonify(response)
-    if 'limitDate' not in payload:
-        response = {'status': statusCodes['api_error'], 'results': 'limitDate value not in payload'}
-        return flask.jsonify(response)
-    if 'valor' not in payload:
-        response = {'status': statusCodes['api_error'], 'results': 'valor value not in payload'}
-        return flask.jsonify(response)
-    if 'preco' not in payload:
-        response = {'status': statusCodes['api_error'], 'results': 'preco value not in payload'}
-        return flask.jsonify(response)
-    
-    statement = 'SELECT COUNT (*) FROM cartao_pre_pago;'
-    cur.execute(statement)
-    row = cur.fetchone()[0]
-    
-    statements = []
-    valuess = []
-    for i in range(int(payload['num'])):
-        statement = 'INSERT INTO cartao_pre_pago (id, limitDate, valor, preco) VALUES (%s, %s, %s, %s)'
-        values = ((str(int(row) + 1)), payload['limitDate'], payload['valor'], payload['preco'])
+    if verify(token, 1):
+        if 'num' not in payload:
+            response = {'status': statusCodes['api_error'], 'results': 'num value not in payload'}
+            return flask.jsonify(response)
+        if 'limitDate' not in payload:
+            response = {'status': statusCodes['api_error'], 'results': 'limitDate value not in payload'}
+            return flask.jsonify(response)
+        if 'valor' not in payload:
+            response = {'status': statusCodes['api_error'], 'results': 'valor value not in payload'}
+            return flask.jsonify(response)
+        if 'preco' not in payload:
+            response = {'status': statusCodes['api_error'], 'results': 'preco value not in payload'}
+            return flask.jsonify(response)
         
-        statements.append(statement)
-        valuess.append(values)
-    
-    try:
+        statement = 'SELECT COUNT (*) FROM cartao_pre_pago;'
+        cur.execute(statement)
+        row = cur.fetchone()[0]
+        
+        statements = []
+        valuess = []
         for i in range(int(payload['num'])):
-            cur.execute(statements[i], valuess[i])
+            statement = 'INSERT INTO cartao_pre_pago (id, limitDate, valor, preco, admin_utilizador_user_id) VALUES (%s, %s, %s, %s)'
+            values = ((str(int(row) + 1)), payload['limitDate'], payload['valor'], payload['preco'], str(1))
             
-            conn.commit()
-        response = {'status': statusCodes['success'], 'results': f'Inserted pre_paid(s)'}
-    
-    except (Exception, psycopg2.DatabaseError) as error:
-        logging.error(f' POST /proj2/cartao_pre_pago/ - error: {error}')
-        response = {'status': statusCodes['internal_error'], 'errors': str(error)}
+            statements.append(statement)
+            valuess.append(values)
+        
+        try:
+            for i in range(int(payload['num'])):
+                cur.execute(statements[i], valuess[i])
+                
+                conn.commit()
+            response = {'status': statusCodes['success'], 'results': f'Inserted pre_paid(s)'}
+        
+        except (Exception, psycopg2.DatabaseError) as error:
+            logging.error(f' POST /proj2/cartao_pre_pago/ - error: {error}')
+            response = {'status': statusCodes['internal_error'], 'errors': str(error)}
 
-        #an error occurred, so we rollback
-        conn.rollback()
+            #an error occurred, so we rollback
+            conn.rollback()
 
-    finally:
-        if conn is not None:
-            conn.close()
+        finally:
+            if conn is not None:
+                conn.close()
 
     return flask.jsonify(response)
 
 @app.route('/proj2/comentario/<song_id>', methods = ['POST'])
-def comentario():
+def comentario(id):
     logging.info('POST /comentario')
     payload = flask.request.get_json()
 
@@ -648,19 +745,59 @@ def comentario():
     if 'conteudo' not in payload:
         response = {'status': statusCodes['api_error'], 'results': 'conteudo value not in payload'}
         return flask.jsonify(response)
-    if 'song_id' not in payload:
-        response = {'status': statusCodes['api_error'], 'results': 'song_id value not in payload'}
-        return flask.jsonify(response)
-    if 'user_id' not in payload:
-        response = {'status': statusCodes['api_error'], 'results': 'user_id value not in payload'}
+    
+    statement = 'SELECT artista_utilizador_user_id FROM musica WHERE song_id = %s'
+    cur.execute(statement, payload['song_1_id'])
+    row_1 = cur.fetchone()[0]
+    
+    statement = 'SELECT user_id FROM utilizador WHERE nome = %s'
+    cur.execute(statement, descodifica_token(token)[0])
+    row_2 = cur.fetchone()[0]
+    
+    statement = 'INSERT INTO comentario (comment_id, conteudo, musica_song_id, musica_artista_song_id, consumidor_utilizador_user_id) VALUES (%s, %s, %s, %s)'
+    values = (str(int(row) + 1), payload['conteudo'], id, str(row_1), str(row_2))
+    
+    try:
+        cur.execute(statement, values)
+        conn.commit()
+        response = {'status': statusCodes['success'], 'results': f'Inserted comment {payload["product_id"]}'}
+    
+    except (Exception, psycopg2.DatabaseError) as error:
+        logging.error(f'POST /comentario - error: {error}')
+        response = {'status': statusCodes['internal_error'], 'errors': str(error)}
+    
+        conn.rollback()
+    
+    finally:
+        if conn is not None:
+            conn.close()
+
+    return flask.jsonify(response)
+
+@app.route('/proj2/comentario/<song_id>/<comment_id>', methods = ['POST'])
+def resposta(song_id, comment_id):
+    logging.info('POST /resposta')
+    payload = flask.request.get_json()
+
+    conn = db_connection()
+    cur = conn.cursor()
+
+    logging.debug(f'POST /resposta - payload: {payload}')
+    
+    if 'conteudo' not in payload:
+        response = {'status': statusCodes['api_error'], 'results': 'conteudo value not in payload'}
         return flask.jsonify(response)
     
-    statement = 'SELECT COUNT (*) FROM musica'
-    cur.execute(statement)
-    row = cur.fetchone()[0]
+    statement = 'SELECT artista_utilizador_user_id FROM musica WHERE song_id = %s'
+    cur.execute(statement, payload['song_1_id'])
+    row_1 = cur.fetchone()[0]
     
-    statement = 'INSERT INTO comentario (id, conteudo, song_id, user_id) VALUES (%s, %s, %s, %s)'
-    values = (str(int(row) + 1), payload['conteudo'], payload['song_id'], payload['user_id'])
+    statement = 'SELECT user_id FROM utilizador WHERE nome = %s'
+    cur.execute(statement, descodifica_token(token)[0])
+    row_2 = cur.fetchone()[0]
+    
+    statement = 'INSERT INTO comentario (comment_id, conteudo, comentario_comment_id, musica_song_id, musica_artista_song_id, consumidor_utilizador_user_id) VALUES (%s, %s, %s, %s)'
+    values = (str(int(row) + 1), payload['conteudo'], comment_id, id, str(row_1), str(row_2))
     
     try:
         cur.execute(statement, values)
