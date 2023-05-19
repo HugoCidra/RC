@@ -152,7 +152,7 @@ def landing_page():
     """
 
 @app.route('/proj2/utilizador', methods=['POST'])
-def user_registration():
+def user_registration(token):
     logging.info('POST /utilizador')
     payload = flask.request.get_json()
     conn = db_connection()
@@ -178,6 +178,8 @@ def user_registration():
     if 'palavra_passe' not in payload:
         response = {'status': statusCodes['api_error'], 'results': 'palavra_passe not in payload'}
         return flask.jsonify(response)
+    
+    
     
     statement = 'SELECT COUNT(*) FROM utilizador;'
     cursor.execute(statement)
