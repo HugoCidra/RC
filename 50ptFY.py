@@ -15,11 +15,16 @@
 ##      Dinis
 ##      Carlos
 ##      University of Coimbra
+##      Elon Musk
 
 import flask
 from flask import jsonify
 import logging
 import psycopg2
+import os
+from flask import request, Flask
+import hmac, hashlib, base64, json
+from dotenv import load_dotenv
 
 app = flask.Flask(__name__)
 
@@ -47,6 +52,50 @@ def db_connection():
 ##########################################################
 ## ENDPOINTS
 ##########################################################
+
+secret_key='keriuhg98i34h7592yghyui69420erjhbnvwiobiww3876ownbwbg'
+
+def gera_token(payload):
+    payload = json.dumps(payload).encode()
+
+    # header
+    header = json.dumps({
+        'typ': 'JWT',
+        'alg': 'HS256'
+    }).encode()
+    b64_header = base64.urlsafe_b64encode(header).decode()
+
+    # payload
+    b64_payload = base64.urlsafe_b64encode(payload).decode()
+
+    # signature
+    signature = hmac.new(
+        key=secret_key.encode(),
+        msg=f'{b64_header}.{b64_payload}'.encode(),
+        digestmod=hashlib.sha256
+    ).digest()
+
+    jwt = f'{b64_header}.{b64_payload}.{base64.urlsafe_b64encode(signature).decode()}'
+    return jwt
+
+
+def descodifica_token(jwt):
+    b64_header, b64_payload, b64_signature = jwt.split('.')
+
+    b64_signature_checker = base64.urlsafe_b64encode(
+        hmac.new(
+            key=secret_key.encode(),
+            msg=f'{b64_header}.{b64_payload}'.encode(),
+            digestmod=hashlib.sha256
+        ).digest()
+    ).decode()
+
+    payload = json.loads(base64.urlsafe_b64decode(b64_payload))
+
+    if b64_signature_checker != b64_signature:
+        raise Exception('Assinatura inválida')
+
+    return payload
 
 @app.route('/')
 def landing_page():
@@ -134,27 +183,32 @@ def user_authentication():
 
     req_values = ['nome', 'password']
     
-    for value in req_values:
-        if value not in payload:
-            return jsonify({'error': value + "not in payload"})
-    
-    logging.debug(f'PUT /user - payload: {payload}')
-    
     try:
-        cursor.execute('SELECT nome, password FROM users;')
-        rows = cursor.fetchall()
-    except (Exception, psycopg2.DatabaseError) as error:
-        logging.error(f'POST /users - error: {error}')
-        response = {'status': statusCodes['internal_error'], 'error': str(error)}
-        return flask.jsonify(response)
-    results = []
-    for row in rows:
-        content = {'nome': row[0], 'password': row[1]}
-        results.append(content)
+        if "nome" in payload and "pass":
+            username=payload["nome"]
+            password=payload["pass"]
+            
+            querie="""SELECT user_id FROM users WHERE users.nome=%s AND pessoa.pass=%s;"""
+            values=(username,password)
+            
+            cursor.execute(querie,values)
+            rows=cursor.fetchall()
+            
+            if(len(rows)>0):
+                token=gera_token(payload)
+                content={'token':token}
+            else:
+                content={'results':'invalid'}
+        else:
+            content={'results':'invalid'}
+    except(Exception,psycopg2.DatabaseError) as error:
+        content={error:str(error)}
+    finally:
+        if conn is not None:
+           conn.close()
+    return jsonify(content)
+    
         
-        ##########################################################
-        ## token shit here to finish this one
-        ##########################################################
         
 
 @app.route('/proj2/musica', methods = ['POST'])
